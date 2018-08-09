@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="8dp">
+
+    <TextView
+        android:id="@+id/mainTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:text="Auto update:"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/toggleAutoUpdate"
+        android:layout_alignBottom="@+id/toggleAutoUpdate"
+        android:layout_toStartOf="@+id/toggleAutoUpdate"
+        android:layout_marginEnd="12dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
+        android:text="Time:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/mainTitle"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Set time"
+        android:layout_below="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/timeText"
+        android:layout_below="@+id/timeText"
+        android:layout_marginTop="31dp"
+        android:text="Status:"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/statusView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_marginStart="42dp"
+        android:layout_toEndOf="@+id/textView2"
+        android:text="-"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/onPeriodText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="43dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Set on period"
+        android:layout_toStartOf="@+id/mainTitle"
+        android:layout_alignEnd="@+id/timeText" />
+
+    <EditText
+        android:id="@+id/offPeriodText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/onPeriodText"
+        android:layout_below="@+id/onPeriodText"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Set off period"
+        android:layout_toStartOf="@+id/mainTitle"
+        android:layout_alignEnd="@+id/onPeriodText" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/offPeriodText"
+        android:layout_below="@+id/offPeriodText"
+        android:layout_marginTop="46dp"
+        android:text="Battery level:"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/batteryView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignStart="@+id/statusView"
+        android:layout_marginStart="17dp"
+        android:text="-"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/timeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/timeText"
+        android:layout_alignStart="@+id/statusView"
+        android:text="-"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/sendBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SEND DATA"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_marginStart="33dp"
+        android:layout_marginBottom="22dp" />
+
+    <Button
+        android:id="@+id/disconnectBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DISCONNECT"
+        android:layout_marginStart="33dp"
+        android:layout_alignBaseline="@+id/sendBtn"
+        android:layout_alignBottom="@+id/sendBtn"
+        android:layout_toEndOf="@+id/sendBtn" />
+
+    <ToggleButton
+        android:id="@+id/toggleAutoUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="14dp"
+        android:checked="false"
+        android:textOff="OFF"
+        android:textOn="ON" />
+
+</RelativeLayout>
