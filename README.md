@@ -1,4 +1,4 @@
-# pira-smart-app
+# Pira Smart App
 Android Pira Smart application
 
 App for communicating with Pira smart devices over BLE 
