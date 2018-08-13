@@ -1,3 +1,8 @@
+/*
+ * pira-smart-app
+ *
+ * Copyright (C) 2018 vid553, IRNAS <www.irnas.eu>
+ */
 package eu.irnas.piraapp;
 
 import android.app.Service;

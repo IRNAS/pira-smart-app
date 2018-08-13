@@ -1,59 +1,37 @@
+/*
+ * pira-smart-app
+ *
+ * Copyright (C) 2018 vid553, IRNAS <www.irnas.eu>
+ */
 package eu.irnas.piraapp;
 
-import android.Manifest;
-import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattService;
-import android.bluetooth.BluetoothManager;
-import android.bluetooth.le.BluetoothLeScanner;
-import android.bluetooth.le.ScanCallback;
-import android.bluetooth.le.ScanResult;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
-import android.content.pm.PackageManager;
-import android.os.AsyncTask;
 import android.os.IBinder;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import static android.R.attr.delay;
 import static eu.irnas.piraapp.PiraService.ACTION_BLESCAN_CALLBACK;
-import static eu.irnas.piraapp.R.id.devicesListView;
-import static eu.irnas.piraapp.R.id.timeView;
 
-// TODO make landscape version of MainActivity
-// TODO change MainActivity name
-// TODO switch screen configuration (PiraConnect is parent od MainActivity)
-// TODO fix CharacteristicNotification
+// TODO properly handle orientation change
+// TODO test CharacteristicNotification
 
-public class MainActivity extends AppCompatActivity {
+public class PiraActivity extends AppCompatActivity {
 
-    private final static String TAG = MainActivity.class.getSimpleName();
+    private final static String TAG = PiraActivity.class.getSimpleName();
 
     TextView titleText;
     TextView timeData;
@@ -177,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
     // Disconnect from device
     public void Disconnect () {
         piraService.Disconnect();
-        ShowConnectActivity();
         read_need = true;
         timeData.setText("-");
         statusData.setText("-");
@@ -185,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
         timeInput.setText("");
         onPeriodInput.setText("");
         offPeriodInput.setText("");
+        ShowConnectActivity();
     }
 
     // Write data to device
@@ -257,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
 
             final String uuid = gattService.getUuid().toString();
             Log.i(TAG, "Service discovered: " + uuid);
-            MainActivity.this.runOnUiThread(new Runnable() {
+            PiraActivity.this.runOnUiThread(new Runnable() {
                 public void run() {
                     adapter.add("Service: "+uuid+" ");
                 }
@@ -269,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
             for (BluetoothGattCharacteristic gattCharacteristic : gattCharacteristics) {
                 final String charUuid = gattCharacteristic.getUuid().toString();
                 Log.i(TAG, "Characteristic discovered for service: " + charUuid);
-                MainActivity.this.runOnUiThread(new Runnable() {
+                PiraActivity.this.runOnUiThread(new Runnable() {
                     public void run() {
                         adapter.add(" - Characteristic: "+charUuid+" ");
                     }
@@ -320,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                     else {
-                        Toast.makeText(MainActivity.this, "Data send OK", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PiraActivity.this, "Data send OK", Toast.LENGTH_SHORT).show();
                     }
 
                     if (read_need) {

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PiraApp</string>
+    <string name="service_description">Service for communicating with Pira device</string>
 </resources>

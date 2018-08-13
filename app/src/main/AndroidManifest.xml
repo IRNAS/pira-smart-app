@@ -21,7 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".PiraActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,10 +31,12 @@
 
         <service
             android:name=".PiraService"
+            android:description="@string/service_description"
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name=".PiraConnect"></activity>
+        <activity android:name=".PiraConnect"
+            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
     </application>
 
 </manifest>

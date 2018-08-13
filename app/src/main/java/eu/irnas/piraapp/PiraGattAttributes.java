@@ -1,11 +1,12 @@
+/*
+ * pira-smart-app
+ *
+ * Copyright (C) 2018 vid553, IRNAS <www.irnas.eu>
+ */
 package eu.irnas.piraapp;
 
 import java.util.HashMap;
 import java.util.UUID;
-
-/**
- * Created by vidra on 6. 08. 2018.
- */
 
 public class PiraGattAttributes {
     static final UUID PIRA_SERVICE_UUID = UUID.fromString("0000b000-0000-1000-8000-00805f9b34fb");
