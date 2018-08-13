@@ -4,7 +4,6 @@ Android Pira Smart application
 App for communicating with Pira smart devices over BLE 
 
 
-
 #### License
 
 All our projects are as usefully open-source as possible.
