@@ -102,6 +102,11 @@ public class PiraConnect extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        if (scanRunning) {
+            StopScan();
+        }
+        bluetoothAdapter = null;
+        bluetoothLeScanner = null;
         super.onDestroy();
     }
 
@@ -180,6 +185,9 @@ public class PiraConnect extends AppCompatActivity {
             public void run() {
                 if (scanRunning) {
                     StopScan();
+                    if (discoveredDevices.size() == 0) {
+                        ScanForDevices();
+                    }
                 }
             }
         }, SCANNING_TIME);
@@ -203,9 +211,6 @@ public class PiraConnect extends AppCompatActivity {
                 Log.d(TAG, "Number of devices found: " + discoveredDevices.size());
             }
         });
-        if (discoveredDevices.size() == 0) {
-            ScanForDevices();
-        }
     }
 
     private void ConnectWithDevice(int selected) {
